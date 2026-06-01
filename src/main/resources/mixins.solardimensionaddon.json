@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kazeshukufuku.solardimensionaddon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "solardimensionaddon.refmap.json",
+  "mixins": [
+    "SolarPanelBlockEntityMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

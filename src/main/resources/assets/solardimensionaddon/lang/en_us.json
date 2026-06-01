@@ -1,0 +1,7 @@
+{
+  "config.solardimensionaddon.dimension_efficiencies": "Dimension efficiencies",
+  "config.solardimensionaddon.dimension_efficiencies.tooltip": "Solar panel output multipliers by dimension ID. Format each entry as '<dimension_id>=<multiplier>'. Use 'default' as the fallback. Final output = Create: Solar Powered base output * this multiplier. Examples: minecraft:the_nether=0.0, minecraft:the_end=0.0, some_mod:custom_dimension=1.25",
+  "config.solardimensionaddon.convert_solar_output_unit": "Convert solar output unit to FE/t",
+  "config.solardimensionaddon.convert_solar_output_unit.tooltip": "When enabled, the solar panel goggle tooltip displays current output as 'xxx FE/t' instead of the original symbol unit.",
+  "tooltip.solardimensionaddon.fe_per_tick": " FE/t"
+}
