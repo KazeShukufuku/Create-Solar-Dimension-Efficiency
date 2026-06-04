@@ -2,9 +2,9 @@
 build/
 run/
 .codex-tmp/
-META-INF/
 
 *.log
 *.class
 
 .vscode/
+media/
