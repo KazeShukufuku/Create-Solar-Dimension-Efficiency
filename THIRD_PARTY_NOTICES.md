@@ -1,38 +1,41 @@
 # Third-Party Notices
 
-This project is an addon for Create: Solar Powered.
+This project is an addon for Create: Solar Powered and optionally integrates
+with Create: Northstar - Redux Unhardcoded.
 
 ## Create: Solar Powered
 
 - Project: Create: Solar Powered
 - Mod ID: `createsolar`
 - CurseForge project ID: `1498600`
-- Referenced file: `createsolar-1.2.6-1.20.1.jar` / CurseForge file ID `7940364`
+- Referenced file: `createsolar-1.2.7-1.21.1.jar` / CurseForge file ID `7940354`
 - Author listed by the mod metadata: HachiroUwU
 - License listed by the mod metadata: MIT
 - Project page: https://www.curseforge.com/minecraft/mc-mods/create-solar-powered
 
-Create: Solar Powered is resolved as a compile-only dependency and is not bundled
-inside this addon jar. Users must install Create: Solar Powered separately.
+Create: Solar Powered is resolved as a compile-only dependency and is not
+bundled inside this addon jar. Users must install Create: Solar Powered
+separately.
 
 This addon references Create: Solar Powered classes and configuration values for
 compatibility, but does not include copied Create: Solar Powered source code or
 assets.
 
-## Northstar Redux
+## Create: Northstar - Redux Unhardcoded
 
-- Project: Northstar Redux
+- Project: Create: Northstar - Redux Unhardcoded
 - Mod ID: `northstar`
-- CurseForge project ID: `1318310`
-- Referenced file: `Northstar-0.5.4+1.20.1.jar` / CurseForge file ID `7476515`
+- CurseForge project ID: `1559756`
+- Referenced file: `Northstar-Redux-Unhardcoded-0.5.4+1.21.1.jar` / CurseForge file ID `8189815`
 - Author listed by the mod metadata: Redstonneur1256
 - Credits listed by the mod metadata: Original mod by lightning2401.
-- License listed by the mod metadata: MIT
-- Project page: https://www.curseforge.com/minecraft/mc-mods/northstar-redux
+- Project page: https://www.curseforge.com/minecraft/mc-mods/create-northstar-redux-unhardcoded
+- Source: https://github.com/JIAFALSEDREAM/Northstar-Redux-Unhardcoded
 
-Northstar Redux is resolved as an optional compile-only dependency and is not
-bundled inside this addon jar. When installed, this addon reads Northstar
-Redux's planet sun multipliers for compatibility.
+Create: Northstar - Redux Unhardcoded is an optional dependency and is not
+bundled inside this addon jar. When installed, this addon reads Northstar's
+registry-backed `PlanetDefinition.sunMultiplier()` values for compatibility,
+with the legacy Northstar Redux sun multiplier API as a fallback.
 
 ## MIT License Text
 

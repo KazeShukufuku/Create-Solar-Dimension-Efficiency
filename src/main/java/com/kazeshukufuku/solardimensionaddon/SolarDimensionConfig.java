@@ -4,9 +4,9 @@ import com.kazeshukufuku.solardimensionaddon.compat.NorthstarCompat;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -18,15 +18,15 @@ public final class SolarDimensionConfig {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String DIMENSION_EFFICIENCIES_TRANSLATION = "config.solardimensionaddon.dimension_efficiencies";
     private static final String CONVERT_OUTPUT_UNIT_TRANSLATION = "config.solardimensionaddon.convert_solar_output_unit";
-    private static final ForgeConfigSpec SPEC;
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> DIMENSION_EFFICIENCIES;
-    private static final ForgeConfigSpec.BooleanValue CONVERT_SOLAR_OUTPUT_UNIT;
+    private static final ModConfigSpec SPEC;
+    private static final ModConfigSpec.ConfigValue<List<? extends String>> DIMENSION_EFFICIENCIES;
+    private static final ModConfigSpec.BooleanValue CONVERT_SOLAR_OUTPUT_UNIT;
 
     private static volatile List<String> cachedEntries = List.of();
     private static volatile ParsedRules cachedRules = new ParsedRules(1.0D, Map.of());
 
     static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
         DIMENSION_EFFICIENCIES = builder
                 .translation(DIMENSION_EFFICIENCIES_TRANSLATION)
@@ -50,8 +50,8 @@ public final class SolarDimensionConfig {
     private SolarDimensionConfig() {
     }
 
-    public static void register() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SPEC);
+    public static void register(ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.COMMON, SPEC);
     }
 
     public static double getMultiplier(Level level) {

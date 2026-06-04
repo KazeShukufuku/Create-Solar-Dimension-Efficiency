@@ -1,49 +1,34 @@
 plugins {
+    id 'java-library'
     id 'eclipse'
     id 'idea'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.neoforged.gradle.userdev' version '7.0.165'
 }
 
-version = mod_version
+version = "${mod_version}-${minecraft_version_short}"
 group = mod_group_id
 
 base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-minecraft {
-    mappings channel: 'official', version: minecraft_version
-
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
     }
-}
 
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "mixins.${mod_id}.json"
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', mod_id
+    }
+
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        arguments.add '--nogui'
+    }
 }
 
 sourceSets.main.resources {
@@ -56,9 +41,30 @@ tasks.withType(AbstractArchiveTask).configureEach {
 }
 
 repositories {
+    mavenCentral()
     maven {
-        name = 'Sponge'
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
+        name = 'NeoForge'
+        url = 'https://maven.neoforged.net/releases'
+    }
+    maven {
+        name = 'Create'
+        url = 'https://maven.createmod.net'
+    }
+    maven {
+        name = 'tterrag'
+        url = 'https://maven.tterrag.com'
+    }
+    maven {
+        name = 'Registrate'
+        url = 'https://maven.ithundxr.dev/snapshots'
+    }
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex 'software\\.bernie.*'
+            includeGroup 'com.eliotlash.mclib'
+        }
     }
     maven {
         name = 'CurseMaven'
@@ -70,19 +76,34 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly fg.deobf('curse.maven:create-solar-powered-1498600:7940364')
-    compileOnly fg.deobf('curse.maven:northstar-redux-1318310:7476515')
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation "net.neoforged:neoforge:${neo_version}"
+
+    compileOnly "com.simibubi.create:create-1.21.1:${create_version}:slim"
+    runtimeOnly("com.simibubi.create:create-1.21.1:${create_version}") {
+        transitive = false
+    }
+    runtimeOnly "com.tterrag.registrate:Registrate:${registrate_version}"
+    runtimeOnly "net.createmod.ponder:ponder-neoforge:${ponder_version}"
+    runtimeOnly "dev.engine-room.flywheel:flywheel-neoforge-1.21.1:${flywheel_version}"
+
+    compileOnly "curse.maven:create-solar-powered-1498600:${create_solar_file_id}"
+    runtimeOnly "curse.maven:create-solar-powered-1498600:${create_solar_file_id}"
+
+    runtimeOnly "curse.maven:create-northstar-redux-unhardcoded-1559756:${northstar_file_id}"
+    runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+    runtimeOnly "com.eliotlash.mclib:mclib:${mclib_version}"
 }
 
 tasks.named('processResources', ProcessResources).configure {
     def replaceProperties = [
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
-            forge_version          : forge_version,
-            forge_version_range    : forge_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
             loader_version_range   : loader_version_range,
+            create_version_range   : create_version_range,
+            create_solar_version_range: create_solar_version_range,
+            northstar_version_range: northstar_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
@@ -92,7 +113,7 @@ tasks.named('processResources', ProcessResources).configure {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
     }
 }
@@ -109,9 +130,7 @@ tasks.named('jar', Jar).configure {
                 'Specification-Version'   : '1',
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors,
-                'MixinConfigs'            : "mixins.${mod_id}.json"
+                'Implementation-Vendor'   : mod_authors
         ])
     }
-    finalizedBy 'reobfJar'
 }

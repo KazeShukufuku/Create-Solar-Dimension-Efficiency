@@ -2,6 +2,6 @@
   "config.solardimensionaddon.dimension_efficiencies": "维度产能效率",
   "config.solardimensionaddon.dimension_efficiencies.tooltip": "按维度 ID 设置太阳能板输出倍率。每一项格式为 '<维度ID>=<倍率>'，可使用 'default' 作为默认回退值。最终输出 = Create: Solar Powered 的基础输出 * 此倍率。示例：minecraft:the_nether=0.0、minecraft:the_end=0.0、some_mod:custom_dimension=1.25",
   "config.solardimensionaddon.convert_solar_output_unit": "将太阳能板输出单位转换为 FE/t",
-  "config.solardimensionaddon.convert_solar_output_unit.tooltip": "开启时，太阳能板护目镜提示中的当前发电量会显示为“xxx FE/t”，而不是原本的符号单位。",
+  "config.solardimensionaddon.convert_solar_output_unit.tooltip": "开启时，太阳能板护目镜提示中的当前发电量会显示为 'xxx FE/t'。",
   "tooltip.solardimensionaddon.fe_per_tick": " FE/t"
 }

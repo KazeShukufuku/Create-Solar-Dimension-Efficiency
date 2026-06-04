@@ -1,6 +1,6 @@
 # Create Solar Dimension Efficiency
 
-1.20.1 Forge addon for Create: Solar Powered `1.2.6-1.20.1`.
+1.21.1 NeoForge addon for Create: Solar Powered `1.2.7` and Create `6.0.9+`.
 
 This mod keeps Create: Solar Powered's original `max_output`, `update_interval`, sunlight, weather, altitude, and temperature logic, then applies a dimension multiplier to the final solar panel output.
 
@@ -17,9 +17,9 @@ dimension_efficiencies = [
 ]
 ```
 
-The `convert_solar_output_unit` option is enabled by default. It changes the solar panel goggle tooltip output unit from the original symbol unit to `xxx FE/t`.
+The `convert_solar_output_unit` option is enabled by default. It changes the solar panel goggle tooltip output unit to `xxx FE/t`.
 
-When Northstar Redux is installed, solar panel output is also multiplied by Northstar's own planet `sunMultiplier` automatically. Northstar planet values do not need to be added to `dimension_efficiencies`.
+When Create: Northstar - Redux Unhardcoded is installed, solar panel output is also multiplied by the planet `sunMultiplier` from Northstar's registry-backed `PlanetDefinition`. Legacy Northstar Redux `NorthstarPlanets.getSunMultiplier(...)` remains a fallback.
 
 Custom dimensions can be added with the same format, for example:
 
@@ -33,12 +33,6 @@ Build:
 gradle build
 ```
 
-The Create: Solar Powered jar is resolved from CurseMaven as a compile-only dependency.
+The Create: Solar Powered jar is resolved as a compile-only dependency from CurseMaven when available. During local migration verification, `.codex-tmp/createsolar-7940354.jar` can be used as a compile-only fallback.
 
 Third-party attribution is documented in `THIRD_PARTY_NOTICES.md` and is packaged into the addon jar under `META-INF/`.
-
-Output jar:
-
-```text
-build/libs/solardimensionaddon-1.0.0.jar
-```

@@ -1,6 +1,7 @@
 .gradle/
 build/
 run/
+runs/
 .codex-tmp/
 
 *.log
