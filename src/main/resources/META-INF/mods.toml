@@ -30,3 +30,10 @@ mandatory=true
 versionRange="[1.2.6,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="northstar"
+mandatory=false
+versionRange="[0.5.4,)"
+ordering="AFTER"
+side="BOTH"

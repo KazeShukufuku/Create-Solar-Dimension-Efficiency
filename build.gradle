@@ -72,6 +72,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly fg.deobf('curse.maven:create-solar-powered-1498600:7940364')
+    compileOnly fg.deobf('curse.maven:northstar-redux-1318310:7476515')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

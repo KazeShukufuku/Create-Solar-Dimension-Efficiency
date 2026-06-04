@@ -1,5 +1,6 @@
 package com.kazeshukufuku.solardimensionaddon;
 
+import com.kazeshukufuku.solardimensionaddon.compat.NorthstarCompat;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
@@ -60,7 +61,8 @@ public final class SolarDimensionConfig {
 
         ParsedRules rules = getRules();
         ResourceLocation dimensionId = level.dimension().location();
-        return rules.dimensionMultipliers().getOrDefault(dimensionId, rules.defaultMultiplier());
+        double configuredMultiplier = rules.dimensionMultipliers().getOrDefault(dimensionId, rules.defaultMultiplier());
+        return configuredMultiplier * NorthstarCompat.getSunMultiplier(level);
     }
 
     public static boolean shouldConvertSolarOutputUnit() {

@@ -19,6 +19,8 @@ dimension_efficiencies = [
 
 The `convert_solar_output_unit` option is enabled by default. It changes the solar panel goggle tooltip output unit from the original symbol unit to `xxx FE/t`.
 
+When Northstar Redux is installed, solar panel output is also multiplied by Northstar's own planet `sunMultiplier` automatically. Northstar planet values do not need to be added to `dimension_efficiencies`.
+
 Custom dimensions can be added with the same format, for example:
 
 ```toml
