@@ -24,7 +24,7 @@ assets.
 - Project: Northstar Redux
 - Mod ID: `northstar`
 - CurseForge project ID: `1318310`
-- Referenced file: `Northstar-0.5.4+1.20.1.jar` / CurseForge file ID `7476515`
+- Referenced file: `Northstar-0.6.1+1.20.1.jar` / CurseForge file ID `8307384`
 - Author listed by the mod metadata: Redstonneur1256
 - Credits listed by the mod metadata: Original mod by lightning2401.
 - License listed by the mod metadata: MIT
@@ -32,7 +32,7 @@ assets.
 
 Northstar Redux is resolved as an optional compile-only dependency and is not
 bundled inside this addon jar. When installed, this addon reads Northstar
-Redux's planet sun multipliers for compatibility.
+Redux's planet sun function for compatibility.
 
 ## MIT License Text
 
