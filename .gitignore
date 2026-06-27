@@ -2,6 +2,7 @@
 build/
 run/
 .codex-tmp/
+runs/
 
 *.log
 *.class

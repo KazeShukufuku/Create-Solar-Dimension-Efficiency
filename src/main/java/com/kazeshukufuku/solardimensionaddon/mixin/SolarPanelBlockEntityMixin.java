@@ -32,8 +32,9 @@ public abstract class SolarPanelBlockEntityMixin {
             return;
         }
 
-        Level level = ((BlockEntity) (Object) this).getLevel();
-        double multiplier = SolarDimensionConfig.getMultiplier(level);
+        BlockEntity blockEntity = (BlockEntity) (Object) this;
+        Level level = blockEntity.getLevel();
+        double multiplier = SolarDimensionConfig.getMultiplier(level, blockEntity.getBlockPos());
         if (multiplier == 1.0D) {
             return;
         }
